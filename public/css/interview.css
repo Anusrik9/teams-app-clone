@@ -1,0 +1,21 @@
+.button-class{
+  background-color: white; 
+  border:none; 
+}
+
+.button-class2{
+  margin: 10px;
+  /* border:none; */
+  font-weight: bold; 
+  background-color: white; 
+}
+
+.button-class2:hover{
+  margin: 10px;
+  /* border:none;  */
+  background-color: rgb(146, 146, 146); 
+}
+
+#interview-code,#schehdule-interview,#interveiwArea{
+  display: none;
+}

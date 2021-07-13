@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Team's Clone -Join Call</title>
+    <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/newcall.css" />
+    <link rel="shortcut icon" href="images/logo.svg" />
+   
+    
+  </head>
+  <body class="has-animations">
+    <div class="body-wrap">
+      <header class="site-header reveal-from-top">
+        <div class="container">
+          <div class="site-header-inner">
+            <div class="brand">
+              <h1 class="m-0">
+               
+              </h1>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="site-content">
+        <section class="hero section illustration-section-01">
+          <div class="container">
+            <div class="hero-inner section-inner">
+              <div class="split-wrap invert-mobile">
+                <div class="split-item">
+                  <div
+                    class="hero-content split-item-content center-content-mobile"
+                  >
+                    <h1
+                      class="mt-0 mb-16 reveal-from-bottom"
+                      data-reveal-delay="150"
+                    >
+                      Video Call Meeting <br />
+                      Teams Clone<br />
+
+                      <button
+                      class="button button-primary pulse"
+                      onclick="joincall()"
+                    >
+                      Join call
+                    </button>
+                      
+                    </h1>
+                    
+                  </div>
+                  <style>
+                    @media (min-width: 641px) {
+                      .hero .split-wrap .split-item {
+                        min-height: 492px;
+                      }
+                    }
+                  </style>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta section center-content-mobile reveal-from-bottom">
+          <div class="container">
+            <div class="cta-inner section-inner cta-split">
+              <div class="cta-slogan">
+                <h3 class="m-0" id="meetingupdates">
+                  Click join call to join the meeting
+                </h3>
+              </div>
+              <div class="cta-action">
+                <div class="mb-24">
+                  <label class="form-label screen-reader" for="input-01"
+                    >This is a label</label
+                  >
+                  <div class="form-group-desktop">
+                    <!-- <input
+                      class="form-input"
+                      type="text"
+                      id="input-01"
+                      value="PurpleSquid"
+                    />
+                     <button
+                      class="button button-primary pulse"
+                      onclick="{window.location.href = '/join/' + document.getElementById('input-01').value}"
+                    >
+                      Join call
+                    </button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer center-content-mobile">
+        <div class="container">
+          <div class="site-footer-inner">
+            <div class="footer-top space-between text-xxs">
+              <div class="brand">
+                <!--<a href="/"
+                  ><img src="images/logo.svg" alt="Neon" width="32" height="32"
+                /></a>-->
+              </div>
+              <div class="footer-social">
+                <div>
+                  <a
+                    target="_blank"
+                    href="https://github.com/"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                     
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="footer-bottom space-between text-xxs invert-order-desktop"
+            >
+              
+                </ul>
+              </nav>
+              
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="js/landing.js"></script>
+    <script src="js/newroom.js"></script>
+  </body>
+</html>

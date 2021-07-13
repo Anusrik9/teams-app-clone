@@ -1,0 +1,21 @@
+.task{
+  padding: 10px;
+  /* background-color: rgb(255, 250, 250); */
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+}
+
+.removeBtnClass{
+  margin-left: 10px;
+  /* background-color: red; */
+}
+
+.removeBtnClass:hover{
+  background-color: red;
+}
+
+#id1{
+  /* display: none; */
+  /* height: 700px; */
+}
