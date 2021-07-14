@@ -2,12 +2,9 @@ TEAMS CLONE<br>
 <hr>
 <B>Getting Started<B>
 git clone code<br>
-- Run `npm i` 
-     <br>
-- Run `npm start`
-     <br>
-- Opens in `localhost:3000`
-     <br>
+Run npm i <br>
+Run node server.js <br>
+Opens in localhost:3000<br>
 <hr>
 Goals:
 <br>

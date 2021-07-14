@@ -1,3 +1,17 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyCL2epSrzXhHgZQgL2ELSOf0c4PwA5fKx8",
+    authDomain: "teams-clone-db-3248d.firebaseapp.com",
+    databaseURL: "https://teams-clone-db-3248d-default-rtdb.firebaseio.com",
+    projectId: "teams-clone-db-3248d",
+    storageBucket: "teams-clone-db-3248d.appspot.com",
+    messagingSenderId: "251199655862",
+    appId: "1:251199655862:web:88082192a8b124f8483b17",
+    measurementId: "G-5RP0SY6Q3H"
+};
+
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var database=firebase.database();
 // Vars
 var isMuted;
 var videoIsPaused;
@@ -28,21 +42,6 @@ const chatZone = $("#chat-zone");
 
 // Need a Map to keep track of dataChannel connecting with each peer
 var dataChannel = new Map();
-
-var firebaseConfig = {
-    apiKey: "AIzaSyCL2epSrzXhHgZQgL2ELSOf0c4PwA5fKx8",
-    authDomain: "teams-clone-db-3248d.firebaseapp.com",
-    databaseURL: "https://teams-clone-db-3248d-default-rtdb.firebaseio.com",
-    projectId: "teams-clone-db-3248d",
-    storageBucket: "teams-clone-db-3248d.appspot.com",
-    messagingSenderId: "251199655862",
-    appId: "1:251199655862:web:88082192a8b124f8483b17",
-    measurementId: "G-5RP0SY6Q3H"
-};
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-var database=firebase.database();
 
 var VideoChat = {
   videoEnabled: true,
@@ -837,11 +836,12 @@ chatInput.addEventListener("keypress", function (event) {
   if (event.keyCode === 13) {
     // Prevent page refresh on enter
     event.preventDefault();
-    var msg = chatInput.value;
-    // Prevent cross site scripting
-    msg =  localStorage.getItem("userName_ls")+" : "+msg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    // Make links clickable
+    var msg = localStorage.getItem("userName_ls")+": "
+    +chatInput.value;
     addmsgtodb(msg);
+    // Prevent cross site scripting
+    msg = msg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    // Make links clickable
     msg = msg.autoLink();
     // Send message over data channel
     sendToAllDataChannels("mes:" + msg);
@@ -854,14 +854,6 @@ chatInput.addEventListener("keypress", function (event) {
   }
 });
 
-function addmsgtodb(msg){
-  var meetingid=localStorage.getItem("meetingid")
-  var ref=database.ref("meetings/"+meetingid+"/chat")
-  data={
-    chatmsg:msg
-  }
-  ref.push(data);
-}
 
 // Called when a message is recieved over the dataChannel
 function handleRecieveMessage(msg, color) {
@@ -873,6 +865,15 @@ function handleRecieveMessage(msg, color) {
   if (entireChat.is(":hidden")) {
     toggleChat();
   }
+}
+
+function addmsgtodb(msg){
+  var meetingid=localStorage.getItem("meetingid")
+  var ref=database.ref("meetings/"+meetingid+"/chat")
+  data={
+    chatmsg:msg
+  }
+  ref.push(data);
 }
 
 function uuidToHue(uuid) {

@@ -401,6 +401,3 @@ function errpushin_otherdb(err){
 
 // }
 
-    // if (keyCode === 13) {
-    //     $("#basic-text1").click();
-    // }

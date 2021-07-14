@@ -1,3 +1,11 @@
+/*!
+ * Snackbar v0.1.14
+ * http://polonel.com/Snackbar
+ *
+ * Copyright 2018 Chris Brame and other contributors
+ * Released under the MIT license
+ * https://github.com/polonel/Snackbar/blob/master/LICENSE
+ */
 
 (function (root, factory) {
   "use strict";

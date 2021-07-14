@@ -1,12 +1,12 @@
 require("dotenv").config();
 var sslRedirect = require("heroku-ssl-redirect");
 // Get twillio auth and SID from heroku if deployed, else get from local .env file
-var twillioAuthToken ="7f89c9b5416a66d365b91c1cbb7534d6"
-  // process.env.HEROKU_AUTH_TOKEN || process.env.LOCAL_AUTH_TOKEN;
-var twillioAccountSID ="AC080244a3e858d1d8878447d949ca0509"
-  // process.env.HEROKU_TWILLIO_SID || process.env.LOCAL_TWILLIO_SID;
+var twillioAuthToken =
+  process.env.HEROKU_AUTH_TOKEN || '8d719965a23c728d16a0454ec8c6e41c';
+var twillioAccountSID =
+  process.env.HEROKU_TWILLIO_SID || 'AC080244a3e858d1d8878447d949ca0509';
 var twilio = require("twilio")(twillioAccountSID, twillioAuthToken);
-var express = require("express"); //intiating express
+var express = require("express");
 var app = express();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
@@ -14,7 +14,8 @@ var path = require("path");
 var public = path.join(__dirname, "public");
 const url = require("url");
 
-app.use(sslRedirect()); //enabling ssl redirect
+// enable ssl redirect
+app.use(sslRedirect());
 
 // Remove trailing slashes in url
 app.use(function (req, res, next) {
@@ -26,9 +27,9 @@ app.use(function (req, res, next) {
   }
 });
 
-app.get("/", function (req, res) {   //redirecting the path
+app.get("/", function (req, res) {
   res.sendFile(path.join(public, "index.html"));
-});     
+});
 
 app.get("/newcall", function (req, res) {
   res.sendFile(path.join(public, "newcall.html"));
@@ -100,7 +101,8 @@ io.on("connection", function (socket) {
     socket.broadcast.to(room).emit("leave", socket.id);
   });
 
-  // When receiving the token message, use the Twilio REST API to request  // token to get ephemeral credentials to use the TURN server.
+  // When receiving the token message, use the Twilio REST API to request an
+  // token to get ephemeral credentials to use the TURN server.
   socket.on("token", function (room, uuid) {
     logIt("Received token request", room);
     twilio.tokens.create(function (err, response) {
