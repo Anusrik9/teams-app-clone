@@ -1,67 +1,68 @@
 var joinermail
 var joinerId 
+
 //adding the meeting to the users database
-function addMeetingOld(){
-console.log("add meeting")
-var meetingjoinermail=getVal("meetingmail")
-var joinerId=mail_to_userid(meetingjoinermail)
-var thisuserref=database.ref("users/"+joinerId)
-flag=0
+// function addMeetingOld(){
+// console.log("add meeting")
+// var meetingjoinermail=getVal("meetingmail")
+// var joinerId=mail_to_userid(meetingjoinermail)
+// var thisuserref=database.ref("users/"+joinerId)
+// flag=0
 
-thisuserref.once("value")
-    .then(function (snapshot){
-            snapshot.forEach(function(childSnapshot){
-                  flag=1;  
-            });
-  });
+// thisuserref.once("value")
+//     .then(function (snapshot){
+//             snapshot.forEach(function(childSnapshot){
+//                   flag=1;  
+//             });
+//   });
 
-if(flag==0)
-{
-  // updateStatus("login-status","This is not a registered account")
-  console.log("not registered account")
-}
-else if(flag==1)
-{
+// if(flag==0)
+// {
+//   // updateStatus("login-status","This is not a registered account")
+//   console.log("not registered account")
+// }
+// else if(flag==1)
+// {
 
-var meetingtext=getVal("meetingtext")
-var meetingdate=getVal("meeting-date")
-var meetingtime=getVal("meeting-time")
-var userId=localStorage.getItem("userid_ls")
-if(meetingtext=="")
-{
-  alert("Enter a valid meeting!!");
-}
-else{
-var ref=database.ref("users/"+userId+"/meetings")
-var otherref=database.ref("users/"+joinerId+"/meetings")
- meetingurl=globalURL+"newcall?="+generateMeeting(10)
+// var meetingtext=getVal("meetingtext")
+// var meetingdate=getVal("meeting-date")
+// var meetingtime=getVal("meeting-time")
+// var userId=localStorage.getItem("userid_ls")
+// if(meetingtext=="")
+// {
+//   alert("Enter a valid meeting!!");
+// }
+// else{
+// var ref=database.ref("users/"+userId+"/meetings")
+// var otherref=database.ref("users/"+joinerId+"/meetings")
+//  meetingurl=globalURL+"newcall?="+generateMeeting(10)
 
-  var data={
-    meetingjoinermail:meetingjoinermail,
-    meeting:meetingtext,
-    meetingdate:meetingdate,
-    meetingtime:meetingtime,
-    meetingurl:meetingurl
-  }
-  var data2={
-    meetingjoinermail:localStorage.getItem("useremail_ls"),
-    meeting:meetingtext,
-    meetingdate:meetingdate,
-    meetingtime:meetingtime,
-    meetingurl:meetingurl
-  }
-  ref.push(data);
-  otherref.push(data2);
+//   var data={
+//     meetingjoinermail:meetingjoinermail,
+//     meeting:meetingtext,
+//     meetingdate:meetingdate,
+//     meetingtime:meetingtime,
+//     meetingurl:meetingurl
+//   }
+//   var data2={
+//     meetingjoinermail:localStorage.getItem("useremail_ls"),
+//     meeting:meetingtext,
+//     meetingdate:meetingdate,
+//     meetingtime:meetingtime,
+//     meetingurl:meetingurl
+//   }
+//   ref.push(data);
+//   otherref.push(data2);
   
-  meetingaddtext=" Your meeting ID is "+meetingurl
-  SendMeetingInvite(joinerId,meetingjoinermail,meetingtext+meetingaddtext,meetingdate,meetingtime)
-  SendMeetingMail(localStorage.getItem("userid_ls"),localStorage.getItem("useremail_ls"),meetingtext+meetingaddtext,meetingdate,meetingtime)
+//   meetingaddtext=" Your meeting ID is "+meetingurl
+//   SendMeetingInvite(joinerId,meetingjoinermail,meetingtext+meetingaddtext,meetingdate,meetingtime)
+//   SendMeetingMail(localStorage.getItem("userid_ls"),localStorage.getItem("useremail_ls"),meetingtext+meetingaddtext,meetingdate,meetingtime)
   
-  clearFields();
-}
+//   clearFields();
+// }
 
-}
-}
+// }
+// }
 
 function addMeeting(){
 console.log("add meeting")
@@ -134,7 +135,7 @@ const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678
   meetref.push(dat1)
   meetref.push(dat2)
 
- meetingaddtext=" Your meeting ID is "+meetingurl
+ meetingaddtext="<br> Your meeting URL is "+meetingurl +" <br> Your meeting ID is "+ result
   SendMeetingInvite(joinerId,meetingjoinermail,meetingtext+meetingaddtext,meetingdate,meetingtime)
   SendMeetingMail(localStorage.getItem("userid_ls"),localStorage.getItem("useremail_ls"),meetingtext+meetingaddtext,meetingdate,meetingtime)
   
@@ -288,16 +289,16 @@ function errData(err){
 }
 
 
-const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+// const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-function generateMeeting(length) {
-    let result = ' ';
-    const charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
+// function generateMeeting(length) {
+//     let result = ' ';
+//     const charactersLength = characters.length;
+//     for ( let i = 0; i < length; i++ ) {
+//         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     }
+//     return result;
+// }
 
 var globalURL=""
 storeURL()

@@ -501,22 +501,42 @@ function daypart(){
  var curHr = today.getHours()
 var daystatus="";
      if (curHr < 12) {
-      daystatus="Good morning"
+      daystatus="Good morning, Hope you are having a good day!!"
      } 
      else if (curHr < 18) {
         // console.log('good afternoon')
-        daystatus="Good afternoon"
+        daystatus="Good afternoon, Hope you are having a good day!!"
          } 
     else if(curHr<21) {
       // console.log('ood evening')
-      daystatus='Good evening'
+      daystatus='Good evening, Hope you are having a good day!!'
        }
     else 
     {
       // console.log('good night')
-      daystatus='Good night'
+      daystatus='Good night, Hope you are having a good day!!'
     }
 
-    document.getElementById("Dashboard").innerHTML="Dashboard <br><br>"+localStorage.getItem("userName_ls")+"<br>"+daystatus
+    document.getElementById("Dashboard").innerHTML="Dashboard <br><br>"+localStorage.getItem("userName_ls")+"<hr>"+daystatus
     
+}
+
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateMeeting15(length) {
+    let result = '';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+function takeinstantcall(){
+
+  var n=globalURL.length
+  var tempid=globalURL.substring(0, n-10) 
+  console.log(tempid)
+  tempid=tempid+"join/"+generateMeeting15(15)
+  window.open(tempid, "_blank");
 }
